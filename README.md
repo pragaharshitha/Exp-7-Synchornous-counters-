@@ -23,90 +23,72 @@ Starting with four J-K flip-flops connected in such a way to always be in the �
 
 The Q outputs of each flip-flop will serve as the respective binary bits of the final, four-bit count:
 
+
 Four-bit “Up” Counter
 ![image](https://user-images.githubusercontent.com/36288975/169644758-b2f4339d-9532-40c5-af40-8f4f8c942e2c.png)
-
 
 ## DOWN COUNTER 
 
 As well as counting “up” from zero and increasing or incrementing to some preset value, it is sometimes necessary to count “down” from a predetermined value to zero allowing us to produce an output that activates when the zero count or some other pre-set value is reached.
-
 This type of counter is normally referred to as a Down Counter, (CTD). In a binary or BCD down counter, the count decreases by one for each external clock pulse from some preset value. Special dual purpose IC’s such as the TTL 74LS193 or CMOS CD4510 are 4-bit binary Up or Down counters which have an additional input pin to select either the up or down count mode.
 ![image](https://user-images.githubusercontent.com/36288975/169644844-1a14e123-7228-4ed8-81a9-eb937dff4ac8.png)
-
-
 4-bit Count Down Counter
-## Procedure:
-## Step 1:
-Module Declaration. module is a keywords defined in Verilog .
-
-## Step 2:
-Input-Output Delecaration.
-Clock and reset are the inputs.
-
-## Step 3:
-Declare the always keyword.
-
-## Step 4:
-Use if loop for the functionality.
-
-## Step 5:
-Assign the counter_up & _down.
-
-## Step 6:
-End the module
-
-
-
-
-## PROGRAM: 
+### Procedure
 ```
-Program for synchornous up and down counter.
+1.Create module projectname(input ,output) to start the verilog programming.
+2.create a if loop condition to increase the count in counter_up function.
+3.Similarly, create another loop for the down counter.
+4.End the verilog program using keyword endmodule.
+5.Get the timing diagram and RTL realization diagram for respective Counters.
+```
+## Program:
+```
+Program for flipflops  and verify its truth table in quartus using Verilog programming.
 Developed by: Pragaharshitha N C
 RegisterNumber:  22003209
 ```
-## COUNTER DOWN:
+### UP COUNTER:
 ```
-module ex(input clk,input reset,output[0:3]counter);
-reg[0:3] counter_down;
-always@(posedge clk or posedge reset)
-begin
-if(reset)
-counter_down<=4'd0;
-else
-counter_down<=counter_down-4'd1;
-end
-assign counter=counter_down;
-endmodule
-```
-## COUNTER UP:
-```
-module ex(input clk,input reset,output[0:3]counter);
+module now(input clk,input reset,output[0:3]counter);
 reg[0:3] counter_up;
 always@(posedge clk or posedge reset)
 begin
 if(reset)
-counter_up<=4'd0;
+counter_up <=4'd0;
 else
 counter_up<=counter_up+4'd1;
 end
 assign counter=counter_up;
 endmodule
 ```
-### RTL LOGIC UP COUNTER :  
-![output](./rtl.png)
+### DOWN COUNTER:
+```
+module dc(input clk,input reset,output[0:3]counter);
+reg[0:3] counter_down;
+always@(posedge clk or posedge reset)
+begin
+if(reset)
+counter_down <=4'd0;
+else
+counter_down<=counter_down+4'd1;
+end
+assign counter=counter_down;
+endmodule
+```
+## Output:
+### RTL LOGIC UP COUNTER AND DOWN COUNTER: 
+![uc-rtl](https://user-images.githubusercontent.com/93427208/169768632-71a6d2bd-960b-499f-be47-786c3e2485a1.png)
+![dc-rtl](https://user-images.githubusercontent.com/93427208/169768640-f52e9138-811c-41cb-87eb-4ef82dba554f.png)
 
-### TIMING DIGRAMS FOR UP COUNTER  :
-![output](./uc.png)
+### TIMING DIGRAMS FOR COUNTER:
+![downtime1](https://user-images.githubusercontent.com/93427208/169768915-394aa9b4-25dd-4e46-b4a2-977fbe090c88.png)
 
-### TRUTH TABLE FOR UP COUNTER :
-![output](./truthtableuc.jpg)
-### RTL LOGIC  DOWN COUNTER:
-![output](./dc.png)
-### TIMING DIGRAMS FOR DOWN COUNTER  :
-![output](./timing%20dc.png)
-### TRUTH TABLE FOR DOWN COUNTER :
-![output](./truthtabledc.jpg)
+![downtime2](https://user-images.githubusercontent.com/93427208/169768928-b1b707b1-b30d-460c-85b6-2a251b6970bf.png)
 
-### RESULTS :
-4 bit up and down counters are implemented and its functionality is validated successfully.
+### TRUTH TABLE:
+![1](https://user-images.githubusercontent.com/91781810/198869113-7671b9ff-4763-4bec-9850-b1df2cae1476.png)
+![2](https://user-images.githubusercontent.com/91781810/198869122-14a2576c-7030-4c30-82b3-3857ef4330c3.png)
+
+
+### RESULT:
+Thus 4 bit up and down counters is implemented and its functionality is validated.
